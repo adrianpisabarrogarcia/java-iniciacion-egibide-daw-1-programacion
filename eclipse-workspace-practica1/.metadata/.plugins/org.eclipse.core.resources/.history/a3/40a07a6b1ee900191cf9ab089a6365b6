@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Ejercicio17 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		int notaMayor, notaMenor, nota;
+		String nombreNotaMayor, nombreNotaMenor;
+		notaMayor = 10;
+		notaMenor = 0;
+		
+		for (int contador = 0; contador < 3; contador++) {
+			System.out.println("Inserta una nota:");
+			nota = entrada.nextInt();
+			
+			if (nota>=notaMenor) {
+				notaMenor = nota;
+								
+			}
+			if(nota<=notaMayor) {
+				notaMayor = nota;
+			}	
+		}
+		System.out.println("La nota máxima obtenida es; "+notaMayor);
+		System.out.println("La nota mínima obtenida es; "+notaMenor);
+		
+
+		
+	}
+}
+
+
+		
+

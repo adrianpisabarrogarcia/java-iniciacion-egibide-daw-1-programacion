@@ -1,0 +1,33 @@
+import java.awt.font.NumericShaper;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Ejercicio19 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		Random aleatorio = new Random(System.currentTimeMillis());
+			
+		int intAleatorio, num;
+		
+		intAleatorio = aleatorio.nextInt(100);
+		//Comprobación: System.out.println(intAleatorio);
+		
+		do {
+			System.out.println("Inserta un número comprendido entre el 0 y el 100");
+			num = entrada.nextInt();
+			if (num>intAleatorio) {
+				System.out.println("Has introducido un número alto, baja el número");
+			}else {
+				System.out.println("Has introducido un número bajo, pon un número alto");
+
+			}
+		} while (num != intAleatorio);
+		
+		
+	}
+}
+
+
+		
+

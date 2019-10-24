@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Ejercicio18 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		int num, numSiguiente, numAnterior, numPantalla;
+		numAnterior = 0;
+		
+		System.out.println("Esribe un número para realizar la secuencua de Fibonacci: ");
+		num = entrada.nextInt();
+		
+		if(num==1) {
+			System.out.println("1");
+			
+		}else {
+			numSiguiente = num;
+			System.out.print("1 ,");
+			for (int i = 0; i <= num; i++) {
+				numPantalla = numAnterior + numSiguiente;
+				System.out.print(" "+ numPantalla +" ");
+				numAnterior = numSiguiente;
+				numSiguiente ++;
+			}
+			
+		}
+		
+	}
+}
+
+
+		
+

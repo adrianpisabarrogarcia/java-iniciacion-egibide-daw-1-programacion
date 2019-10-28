@@ -1,7 +1,5 @@
 import java.util.*;
 
-
-
 public class Ejercicio5 {
 
 	public static void main(String[] args) {
@@ -21,19 +19,25 @@ public class Ejercicio5 {
 
 		int heridos = 0;
 		int muertos = 0;
-			
+		
+		//calcula muertos
 		for (int i = 0; i < numAleatorioString.length(); i++) {
 			if (numAleatorioString.charAt(i) == numString.charAt(i)) {
 				muertos ++;
 			}
 		}
+		//calcula heridos
 		for (int i = 0; i < numAleatorioString.length(); i++) {
 			
 			for (int j = 0; j < numString.length(); j++) {
-				if (numAleatorioString.charAt(i) == numString.charAt(j)) {
-					System.out.println(numAleatorioString.charAt(i) +"  "+ numString.charAt(j));
-					heridos ++;
+				if (numAleatorioString.charAt(i) != numString.charAt(i)) {
+					if (numAleatorioString.charAt(i) == numString.charAt(j)) {
+						//comprobación:
+						//System.out.println(numAleatorioString.charAt(i) +"  "+ numString.charAt(j));
+						heridos ++;
+					}
 				}
+				
 			}
 		}
 		System.out.println("Hay " + muertos + " muertos.");

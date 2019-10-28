@@ -1,0 +1,22 @@
+import java.util.*;
+
+
+
+public class Ejercicio5v2 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		Random aleatorio = new Random();
+		
+		Integer numAleatorio = aleatorio.nextInt(1000);		
+		String numAleatorioString = Integer.toString(numAleatorio);
+		System.out.println(numAleatorioString);
+		
+		if (condition) {
+			
+		}
+		
+		
+	}
+
+}

@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Ejercicio22v2 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		int num;
+		System.out.println("Inserta un número para poner los números primos hasta este número incluido el introducido: ");
+	
+		num = entrada.nextInt();
+		for (int i = 1; i < (num+1); i++) {
+			boolean numPrimos = numerosPrimos(i);
+			if (numPrimos == false) {
+					System.out.println(i+"    ");
+			}
+		}
+	}
+	
+	public static boolean numerosPrimos(int num) {
+		int contador = 1;
+		int a= 1;
+			while (contador<(num+1)) {
+				
+				if (contador % num == 0) {
+					a ++;
+				}	
+				contador ++;
+			}
+		
+		if (a != 2) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+}
+
+
+		
+

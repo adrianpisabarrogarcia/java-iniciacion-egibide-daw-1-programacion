@@ -1,0 +1,23 @@
+import javax.swing.JOptionPane;
+
+public class Ejercicio21 {
+
+	public static void main(String[] args) {
+		int num;
+		JOptionPane.showInputDialog(null, "Vamos a ver si un número introducido es primo o no.");
+		try {
+			num = Integer.parseInt(JOptionPane.showInputDialog(null, "Insertar un número"));
+			
+
+		} catch (Exception e) {
+			JOptionPane.showInputDialog(null, "Error. No has introducido un número natural.");
+		} finally {
+			JOptionPane.showInputDialog(null, "Proceso terminado");
+		}
+		
+	}
+}
+
+
+		
+

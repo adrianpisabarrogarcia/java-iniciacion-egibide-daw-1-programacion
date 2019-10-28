@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Ejercicio22v3 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		
+		int num, contador, i, num_introducir;
+		System.out.println("Inserta un número para escribirte los n- primeros números primos");
+		num_introducir = entrada.nextInt();
+		i = 1;
+		num = 1;
+		contador = 0;
+		
+		
+		while (contador != num_introducir) {
+			if ((num % i) == 0) {
+				contador ++;
+				
+			}else if (contador == 2) {
+				System.out.println(i + "     " );
+			}
+			
+			i++;
+			num ++;
+		}
+		
+	}
+}
+
+
+		
+

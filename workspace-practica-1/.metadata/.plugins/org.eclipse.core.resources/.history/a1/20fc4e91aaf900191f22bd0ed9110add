@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;;
+
+public class Ejercicio22 {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		int num;
+		System.out.println("Inserta un número para poner los números primos hasta este número incluido el introducido: ");
+		
+		
+		try {
+			num = entrada.nextInt();
+			for (int i = 1; i < (num+1); i++) {
+				boolean numPrimos = numerosPrimos(i);
+				if (numPrimos == false) {
+					System.out.println(i+"    ");
+				}
+			}
+			System.out.println();
+		} catch (Exception e) {
+			System.out.println("Introduce un número natural válido. ERROR.");
+		}
+		
+		
+		
+		
+	}
+	
+	public static boolean numerosPrimos(int num) {
+		int contador = 0;
+		int a= 0;
+			while (contador<(num+1)) {
+				
+				if (num % contador == 0) {
+					a ++;
+				}	
+				contador ++;
+			}
+		
+		
+		if (a == 2) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+}
+
+
+		
+

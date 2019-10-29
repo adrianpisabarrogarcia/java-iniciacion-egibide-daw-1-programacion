@@ -69,9 +69,7 @@ public class Ejercicio8 {
 				System.out.println(" ");
 				correcto = false;
 			}
-			
 		} while (correcto != true);
-		
 	}
 	
 	public static void a() {

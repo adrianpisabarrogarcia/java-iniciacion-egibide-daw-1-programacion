@@ -9,7 +9,7 @@ public class Ejercicio1 {
 		double min = 100;
 		
 		for (int i = 0; i < 10; i++) {
-			num[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Inserta un número: \n pos: "+i));
+			num[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Inserta un número: \n pos: "+(i+1)));
 		}
 		for (int i = 0; i < 10; i++) {
 			if (max<num[i]) {

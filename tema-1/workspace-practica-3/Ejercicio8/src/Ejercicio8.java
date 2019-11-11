@@ -61,7 +61,7 @@ public class Ejercicio8 {
 				System.out.println(" ");
 				correcto = false;
 			} catch (longitud e) {
-				System.out.println("LONGITUD DE ENTRADA INCORRECTA, HAS METIDO M√ÅS DE UN CAR√ÅCTER. ERROR.");
+				System.out.println("LONGITUD DE ENTRADA INCORRECTA, HAS METIDO M¡S DE UN CAR¡CTER. ERROR.");
 				System.out.println(" ");
 				correcto = false;
 			} catch (Exception e) {
@@ -112,7 +112,9 @@ public class Ejercicio8 {
 	public static void c() {
 		do {
 			try {
-				String cadena = JOptionPane.showInputDialog(null, "Inserta una fase para contar cuantas vocales tiene: ");
+				System.out.println("inserta una frase para contar cuantas vocales hay en la frase");
+				String cadena = entrada.nextLine();
+				cadena = entrada.nextLine();
 				if (cadena.isEmpty()) {
 					throw new enBlanco();
 				}
@@ -129,13 +131,13 @@ public class Ejercicio8 {
 						break;
 					}
 				}
-				JOptionPane.showMessageDialog(null, "El mensaje: <"+cadena+"> tiene "+vocales+" vocales");
+				System.out.println("El mensaje: <"+cadena+"> tiene "+vocales+" vocales");
 				correcto = true;
 			} catch (enBlanco e) {
-				JOptionPane.showMessageDialog(null, "El mensaje esta en blanco. ERROR.");
+				System.out.println( "El mensaje esta en blanco. ERROR.");
 				correcto = false;
 			}catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "ERRORES.");
+				System.out.println("ERRORES.");
 				correcto = false;
 			}
 			

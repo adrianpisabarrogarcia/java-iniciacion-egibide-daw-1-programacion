@@ -10,9 +10,6 @@ public class Ejercicio5 {
 		  *    
 		  *    intruduceme el dia 3 del mes 3 = 6
 		  *    
-		  *    
-		  * 
-		  * 
 		  */
 		
 		

@@ -22,7 +22,6 @@ public class Ejercicio4 {
 			meses[11] = "DICIEMBRE";
 		
 		try {
-			
 			mesIntroducido = JOptionPane.showInputDialog(null, "Introduce el mes: ");
 			String mesIntroducidoMayusculas = mesIntroducido.toUpperCase();
 			

@@ -9,6 +9,8 @@ public class Ejercicio11 {
 	public static int [][] golosinasCantidad = new int [4][4];
 	public static int [][] golosinasVentas = new int [4][4];
 	public static boolean finalPrograma = false;
+	public static int seleccion;
+	
 
 	public static void main(String[] args) {
 		datosArrays();
@@ -51,14 +53,14 @@ public class Ejercicio11 {
 	
 	public static void panelImprimir() {
 		try {
-			int seleccion = Integer.parseInt(JOptionPane.showInputDialog("Inserta un número según la operación que quieras desarrollar:"
+			seleccion = Integer.parseInt(JOptionPane.showInputDialog("Inserta un número según la operación que quieras desarrollar:"
 					+ "\n 1.- Pedir golosinas"
 					+ "\n 2.- Mostrar golosinas"
 					+ "\n 3.- Rellenar golosinas"
 					+ "\n 4.- Apagar máquina"));
 			switch (seleccion) {
 				case 1:
-					pedirGolosinas();
+					panelGolosinas();
 					finalPrograma = false;
 					break;
 				case 2:
@@ -88,8 +90,8 @@ public class Ejercicio11 {
 		
 	}
 	
-	//1
-	public static void pedirGolosinas() {
+	/*1, parte del 3*/
+	public static void panelGolosinas() {  
 		try {
 			String golosinas = " ";
 			for (int i = 0; i < golosinasNombre.length; i++) {
@@ -102,17 +104,24 @@ public class Ejercicio11 {
 			int numFila = (numGolosina.charAt(0)-'0')-1;
 			int numColumna = (numGolosina.charAt(1)-'0')-1;
 			
-			if ((numFila==0 || numFila==1 || numFila==2 || numFila==3) &&  (numColumna==0 || numColumna==1 || numColumna==2 || numColumna==3)) {
-				if (golosinasCantidad[numFila][numColumna]==0) {
-					JOptionPane.showMessageDialog(null, "No hay más golosinas del producto "+ golosinasNombre[numFila][numColumna]);
-										
-				}else{
-					golosinasCantidad[numFila][numColumna]= golosinasCantidad[numFila][numColumna]-1;
-					JOptionPane.showMessageDialog(null, "El producto "+ golosinasNombre[numFila][numColumna]+" ahora tiene "+golosinasCantidad[numFila][numColumna]+" disponibles");
-				}
-				
-			}else {
+			if (!((numFila==0 || numFila==1 || numFila==2 || numFila==3) &&  (numColumna==0 || numColumna==1 || numColumna==2 || numColumna==3))) {
 				throw new NumeroIncorrecto();
+			}else {
+				if (seleccion==1) {
+					if (golosinasCantidad[numFila][numColumna]==0) {
+						JOptionPane.showMessageDialog(null, "No hay más cantidad del producto "+ golosinasNombre[numFila][numColumna]);
+											
+					}else{
+						golosinasCantidad[numFila][numColumna]= golosinasCantidad[numFila][numColumna]-1;
+						golosinasVentas[numFila][numColumna] = golosinasVentas[numFila][numColumna] +1;
+						JOptionPane.showMessageDialog(null, "El producto "+ golosinasNombre[numFila][numColumna]+" ahora tiene "+golosinasCantidad[numFila][numColumna]+" disponibles");
+					}	
+				}
+				if (seleccion==3) {
+					golosinasCantidad[numFila][numColumna]= Integer.parseInt(JOptionPane.showInputDialog("Inserta la cantidad repuesta del producto "+golosinasNombre[numFila][numColumna]+":"));
+					
+					
+				}
 			}
 			
 		} catch (NumeroIncorrecto e) {
@@ -125,24 +134,46 @@ public class Ejercicio11 {
 	}
 	//2
 	public static void mostrarGolosinas() {
-		
+		String golosinas = "";
+		for (int i = 0; i < golosinasNombre.length; i++) {
+			for (int j = 0; j < golosinasNombre.length; j++) {
+				if (golosinasCantidad[i][j]>0) {
+					golosinas=golosinas+"\n"+ (i+1)+(j+1)+".- "+golosinasNombre[i][j]+". Precio: "+golosinasPrecio[i][j]+"€";
+
+				}
+			}
+			golosinas=golosinas+" \n ";
+		}
+		JOptionPane.showMessageDialog(null, golosinas);
 	}
 	//3
 	public static void rellenarGolosinas() {
-	
+		try {
+			String contrasena = JOptionPane.showInputDialog("Introduce contraseña:");
+			if (contrasena.equals("MaquinaExpendedora2019")) {
+				panelGolosinas();
+			}else {
+				throw new ContrasenaIncorrecta();
+			}
+		} catch (ContrasenaIncorrecta e) {
+			JOptionPane.showMessageDialog(null, "Contraseña errónea.");
+		}
+		
 	}
 	//4
 	public static void mostrarVentas() {
 		String imprimirValores= "";
 		for (int i = 0; i < golosinasVentas.length; i++) {
 			for (int j = 0; j < golosinasVentas.length; j++) {
-				imprimirValores = imprimirValores+ "El producto: "+golosinasNombre[i][j] + " se ha vendido " + golosinasVentas[i][j]+" cantidades\n";
+				if (golosinasVentas[i][j]>0) {
+					imprimirValores = imprimirValores+ "El producto: "+golosinasNombre[i][j] + " se han vendido " + golosinasVentas[i][j]+" cantidades\n";
+
+				}
 			}
 			imprimirValores= imprimirValores +"\n";
 			
 		}
-		JOptionPane.showInputDialog(imprimirValores);
+		JOptionPane.showMessageDialog(null, imprimirValores);
 		
 	}
-
 }

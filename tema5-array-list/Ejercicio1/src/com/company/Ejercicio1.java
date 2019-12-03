@@ -31,7 +31,7 @@ public class Ejercicio1 {
                             convertirArray();
                             break;
                         case 5:
-                            mostrarElementos();
+                            mostrarElementosArayList();
                             break;
                         case 6 :
                             insertarElemento();
@@ -47,7 +47,7 @@ public class Ejercicio1 {
                             break;
                         case 10:
                             terminarBuucle = true;
-                            JOptionPane.showMessageDialog(null,"FIN DEl PROGRAMA");
+                            JOptionPane.showMessageDialog(null,"FIN DEL PROGRAMA");
                             break;
                     }
 
@@ -134,19 +134,19 @@ public class Ejercicio1 {
 
 
             for (double x : numeros) {
-               // while (salir == false) {
+                while (salir == false) {
                     if (numeros.contains(numero)) {
                         JOptionPane.showMessageDialog(null, "Se ha encontrado el numero: " + numero);
 
                         if (seleccion == 3) {
-                            numeros.remove(numeros.contains(numero));
+                            numeros.remove(numero);
                             JOptionPane.showMessageDialog(null, "Se ha borrado el numero "+numero);
                             mostrarElementosArayList();
                         }
                         salir = true;
-                        x = numeros.size()+2;
+
                     }
-               // }
+                }
             }
             if (salir == false){
                 JOptionPane.showMessageDialog(null,"No se ha encontrado el numero :"+numero);
@@ -168,33 +168,14 @@ public class Ejercicio1 {
 
     }
 
-    public static void mostrarElementos(){
-        String imprimirArray="";
-        try{
-            if (numeros.isEmpty()) throw new enBlancoArray();
-
-            for (int i = 0; i < numeros.size() ; i++) {
-                imprimirArray = numeros.get(i) + " ";
-
-            }
-            JOptionPane.showMessageDialog(null, "Elementos del arraylist: "+imprimirArray);
-
-        }catch (enBlancoArray e){
-            JOptionPane.showMessageDialog(null, "El array esta vacío");
-
-        }
-
-
-    }  //revisar
-
     public static void insertarElemento(){
-        Double numero = Double.parseDouble(JOptionPane.showInputDialog("Inserta un nuevo elemento al final del array list"));
-        int posicionArrayList = numeros.size()+1;
-        numeros.add(posicionArrayList, numero);
+        double numero = Double.parseDouble(JOptionPane.showInputDialog("Inserta un nuevo elemento al final del array list"));
+        //int posicionArrayList = numeros.size()+1;
+        numeros.add(numero);
     }
 
     public static void insertarElementoPosicionConcreta(){
-        Double numero = Double.parseDouble(JOptionPane.showInputDialog("Inserta el nuevo elemento que quieres añadir en el array list"));
+        double numero = Double.parseDouble(JOptionPane.showInputDialog("Inserta el nuevo elemento que quieres añadir en el array list"));
         int posicionArrayList = Integer.parseInt(JOptionPane.showInputDialog("Inserta la posición del array list que quieres insertar el numero "+numero));
         numeros.add(posicionArrayList-1, numero);
     }
@@ -202,8 +183,8 @@ public class Ejercicio1 {
     public static void borrarElemento(){
         int posicionArrayList = Integer.parseInt(JOptionPane.showInputDialog("Inserta la posición del array list que quieres eliminar" ));
         numeros.remove(posicionArrayList-1);
-        JOptionPane.showMessageDialog(null, "se acaba de borrar el numero" +posicionArrayList+ "del array list.");
-        mostrarElementos();
+        JOptionPane.showMessageDialog(null, "se acaba de borrar el numero de la posicion " +posicionArrayList+ "del array list.");
+        mostrarElementosArayList();
     }
 
     public static void sumaPromedio(){

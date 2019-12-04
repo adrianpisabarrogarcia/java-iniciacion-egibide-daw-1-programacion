@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Ejercicio1 {
+    //Variables globales
     public static ArrayList<Double> numeros = new ArrayList();
     public static int seleccion;
 
+    //main
     public static void main(String[] args) {
         boolean terminarBuucle = false;
         do {
@@ -63,13 +65,17 @@ public class Ejercicio1 {
         }while (terminarBuucle == false);
 	    
     }
-    
+
+    //metodos
     public static void introducirArray() throws Exception{
         boolean bucleFin = false;
         double x;
         do {
             try {
                 x = Double.parseDouble(JOptionPane.showInputDialog("Inserta un numero:"));
+                /*if (x == JOptionPane.NO_OPTION) {
+                    salirdelprograma();
+                }*/
                 numeros.add(x);
 
                 String finalBucleIntroducirArrays = JOptionPane.showInputDialog("Inserta <s>/<n> si deseas continuar o no.");
@@ -193,9 +199,8 @@ public class Ejercicio1 {
             suma = suma + numeros.get(i);
 
         }
-        JOptionPane.showMessageDialog(null, "La suma completa del arraylist es: "+suma);
-        JOptionPane.showMessageDialog(null, "El promedio del arraylist es: "+suma/numeros.size());
-
+        JOptionPane.showMessageDialog(null, "La suma completa del arraylist es: "+suma+"" +
+                "El promedio del arraylist es: "+suma/numeros.size());
     }
 
     public static void mostrarElementosArayList(){
@@ -208,9 +213,5 @@ public class Ejercicio1 {
         JOptionPane.showMessageDialog(null, "ArrayList: "+imprimir);
 
     }
-
-
-
-
 
 }

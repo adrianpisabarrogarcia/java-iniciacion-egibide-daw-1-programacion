@@ -39,7 +39,6 @@ public class Main {
         Directivo d1 = new Directivo(e1.getNombre(),e1.getEdad(), e1.getSueldo_bruto(),"Egibide Arriaga",subordinados);
         System.out.println(d1.mostrar());
 
-        //instanceof
 
 
 

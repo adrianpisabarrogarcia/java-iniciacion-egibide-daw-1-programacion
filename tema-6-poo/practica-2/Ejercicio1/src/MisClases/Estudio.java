@@ -9,7 +9,7 @@ public class Estudio {
     private String pais;
     private String telefonos;
 
-    public Estudio(String nombre, String ciudad, String direccion, String dirWeb, String fechaFundacion, String pais, String telefonos) {
+    public void nuveoEstudio(String nombre, String ciudad, String direccion, String dirWeb, String fechaFundacion, String pais, String telefonos) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.direccion = direccion;
@@ -75,6 +75,16 @@ public class Estudio {
         this.telefonos = telefonos;
     }
 
+    //otros metodos
+    public void modificaEstudio(){
 
-    public Entrada
+    }
+
+    public Estudio[] despliegaEstudio(){
+        return null;
+    }
+
+    public void cierraEstudio(){
+
+    }
 }

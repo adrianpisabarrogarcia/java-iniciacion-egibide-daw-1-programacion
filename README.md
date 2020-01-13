@@ -1,2 +1,2 @@
-# java-iniciacion-egibide-daw-programacion
+# java-iniciacion-programacion
 Programas de iniciación

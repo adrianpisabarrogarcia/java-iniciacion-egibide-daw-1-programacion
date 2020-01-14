@@ -181,59 +181,86 @@ public class Validaciones {
     }
     
     public static void programa5(){
-       pat1 = Pattern.compile("[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}");
+       pat1 = Pattern.compile("([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])[.]"
+               + "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])[.]"
+               + "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])[.]"
+               + "([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])");
     }
     
     public static void programa6(){
-       pat1 = Pattern.compile("");
+       pat1 = Pattern.compile("[0-9]{4}[A-Z]{3}");
     }
     
     public static void programa7(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("[0-1]+");
     }
     
     public static void programa8(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("[0-7]+");
     }
     
     public static void programa9(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("([A-F]*[0-9]*)+");
     }
     
     public static void programa10(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("((-)?[0-9]+)|(([-]?)[0-9]+([.]|[,])[0-9]+)"
+               + "");
     }
     
     public static void programa11(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("[0-9]+|[0-9]+");
     }
     
     public static void programa12(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("((-)[0-9]+)|([-][0-9]+([.]|[,])[0-9]+)");
     }
     
     public static void programa13(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+        int decimales = Integer.parseInt(JOptionPane.showInputDialog("Inserta la cantidad de decimales que quieres que tenga."));
+         if (decimales==0) {
+                    pat1 = Pattern.compile("((-)?[0-9]+)");
+
+        }else{
+                    pat1 = Pattern.compile("(([-]?)[0-9]+([.]|[,])["+decimales+"]+)");
+
+         }
     }
     
     public static void programa14(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+        int decimales = Integer.parseInt(JOptionPane.showInputDialog("Inserta la cantidad de decimales que quieres que tenga."));
+         if (decimales==0) {
+                    pat1 = Pattern.compile("([0-9]+)");
+
+        }else{
+                    pat1 = Pattern.compile("([0-9]+([.]|[,])["+decimales+"]+)");
+
+         }    
     }
     
     public static void programa15(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+        int decimales = Integer.parseInt(JOptionPane.showInputDialog("Inserta la cantidad de decimales que quieres que tenga."));
+         if (decimales==0) {
+                    pat1 = Pattern.compile("([-][0-9]+)");
+
+        }else{
+                    pat1 = Pattern.compile("([-][0-9]+([.]|[,])["+decimales+"]+)");
+
+         }  
     }
     
     public static void programa16(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("(([1-2][0-9])|([1-9])|([3][0-1])"
+               + "[/][1-12]/[1,]");
     }
     
     public static void programa17(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("([A-Z][a-z]+[\\s]*){1,3}");
     }
     
     public static void programa18(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("([\\w]{3,30}+[\\W]{1}){3,30}[@]([\\w]{3,20}[.])?[\\w]{3,20}[.][a-z]{1,3}");
+       //REPASAR QUE ESTA MAL
     }
     
     public static void programa19(){

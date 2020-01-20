@@ -56,7 +56,7 @@ public class Validaciones {
             case 4:
                 validacion();
                 programa4();
-                matcher();
+                programa4verificarletra();
                 break;
             case 5:
                 validacion();
@@ -165,7 +165,7 @@ public class Validaciones {
     }
     public static void programa1(){
       
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("[0-9]+|-[0-9]");
     }
     
     public  static void programa2(){
@@ -177,7 +177,33 @@ public class Validaciones {
     }
     
     public static void programa4(){
-       pat1 = Pattern.compile("^[0-9]{8}[A-Z]$");
+       pat1 = Pattern.compile("[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]");
+    }
+    public static void programa4verificarletra(){
+       
+        Matcher mat1 = pat1.matcher(validacion);
+            if (mat1.matches ()) {
+                char letrasDNI[]={'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
+                String numeroDNI = "";
+                for (int i = 0; i < (validacion.length()-1); i++) {
+                     numeroDNI= numeroDNI + validacion.charAt(i);
+                }
+                int numeroDNIint = Integer.parseInt(numeroDNI);
+                int calculo = numeroDNIint % 23;
+                char calculoLetra = validacion.charAt(8);
+                if ( calculoLetra ==  letrasDNI[calculo]){
+                    JOptionPane.showMessageDialog(null, "SÍ");
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "NO");
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "NO");
+            }
+        
+        
+        
     }
     
     public static void programa5(){
@@ -188,7 +214,7 @@ public class Validaciones {
     }
     
     public static void programa6(){
-       pat1 = Pattern.compile("[0-9]{4}[A-Z]{3}");
+       pat1 = Pattern.compile("[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}");
     }
     
     public static void programa7(){
@@ -200,16 +226,15 @@ public class Validaciones {
     }
     
     public static void programa9(){
-       pat1 = Pattern.compile("([A-F]*[0-9]*)+");
+       pat1 = Pattern.compile("(([A-F]+)|([0-9]+))+");
     }
     
     public static void programa10(){
-       pat1 = Pattern.compile("((-)?[0-9]+)|(([-]?)[0-9]+([.]|[,])[0-9]+)"
-               + "");
+       pat1 = Pattern.compile("((-)?[0-9]+)|(([-]?)[0-9]+([.]|[,])[0-9]+)");
     }
     
     public static void programa11(){
-       pat1 = Pattern.compile("[0-9]+|[0-9]+");
+       pat1 = Pattern.compile("[0-9]+|[0-9]+([.]|[,])[0-9]+");
     }
     
     public static void programa12(){
@@ -222,7 +247,7 @@ public class Validaciones {
                     pat1 = Pattern.compile("((-)?[0-9]+)");
 
         }else{
-                    pat1 = Pattern.compile("(([-]?)[0-9]+([.]|[,])["+decimales+"]+)");
+                    pat1 = Pattern.compile("(([-]?)[0-9]+([.]|[,])[0-9]{"+decimales+"})");
 
          }
     }
@@ -233,7 +258,7 @@ public class Validaciones {
                     pat1 = Pattern.compile("([0-9]+)");
 
         }else{
-                    pat1 = Pattern.compile("([0-9]+([.]|[,])["+decimales+"]+)");
+                    pat1 = Pattern.compile("([0-9]+([.]|[,])[0-9]{"+decimales+"})");
 
          }    
     }
@@ -244,14 +269,17 @@ public class Validaciones {
                     pat1 = Pattern.compile("([-][0-9]+)");
 
         }else{
-                    pat1 = Pattern.compile("([-][0-9]+([.]|[,])["+decimales+"]+)");
+                    pat1 = Pattern.compile("([-][0-9]+([.]|[,])[0-9]{"+decimales+"})");
 
          }  
     }
-    
+                        //NO ENTIENDO QUE ESTA MAL
     public static void programa16(){
-       pat1 = Pattern.compile("(([1-2][0-9])|([1-9])|([3][0-1])"
-               + "[/][1-12]/[1,]");
+       pat1 = Pattern.compile("(([1-2][0-9])|([1-9])|([3][0-1]))[/]([4]|[6]|[9]|[11])[/][1,5000]");
+              /*
+               + "(([1-2][0-9])|([1-9])|([3][0])[/]([13578]|[10]|[12])/[1,])"
+               + "(([1][0-9])|([1-9])|([2][0-8])[/]([2])/[1,])");
+               */
     }
     
     public static void programa17(){
@@ -259,21 +287,18 @@ public class Validaciones {
     }
     
     public static void programa18(){
-       pat1 = Pattern.compile("([\\w]{3,30}+[\\W]{1}){3,30}[@]([\\w]{3,20}[.])?[\\w]{3,20}[.][a-z]{1,3}");
-       //REPASAR QUE ESTA MAL
+        //pat1 = Pattern.compile("[a-z]+[@][a-z]+[.][a-z]{2,3}"); //email normal
+        pat1 = Pattern.compile("([a-z]+[\\W]?[0-9]?)+[@][a-z]+[.]([a-z]+)?[.]?[a-z]{2,3}"); //email normal + egibide
+
     }
     
     public static void programa19(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("[@]([\\w]+[_]?[-]?)+");
     }
     
     public static void programa20(){
-       pat1 = Pattern.compile("[0-9]+|-[0-9]+");
+       pat1 = Pattern.compile("[9][7]([8]|[9])[0-9]{10}");
     }
-    
-    
-    
-    
-    
+      
     
 }

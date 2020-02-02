@@ -1,8 +1,5 @@
 
-package ejericicio21;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+package ejercicio21;
 
 public class Alumno {
     private String codigo;
@@ -11,26 +8,14 @@ public class Alumno {
     private String telefono;
     private String edad;
     private String sexo;
-    private String fechaNacimineto;
+    private String fechaNacimiento;
     private String emailPersonal;
     private String emailEgibide;
     private String web;
     private String curso;
     private String estadoCivil;
 
-    public Alumno(String codigo, String nombre, String domicilio, String telefono, String edad, String sexo, String fechaNacimineto, String emailPersonal, String emailEgibide, String web, String curso, String estadoCivil) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.domicilio = domicilio;
-        this.telefono = telefono;
-        this.edad = edad;
-        this.sexo = sexo;
-        this.fechaNacimineto = fechaNacimineto;
-        this.emailPersonal = emailPersonal;
-        this.emailEgibide = emailEgibide;
-        this.web = web;
-        this.curso = curso;
-        this.estadoCivil = estadoCivil;
+    public Alumno() {
     }
 
     public String getCodigo() {
@@ -81,12 +66,12 @@ public class Alumno {
         this.sexo = sexo;
     }
 
-    public String getFechaNacimineto() {
-        return fechaNacimineto;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFechaNacimineto(String fechaNacimineto) {
-        this.fechaNacimineto = fechaNacimineto;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getEmailPersonal() {
@@ -128,14 +113,17 @@ public class Alumno {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
-    
-    
-    //Otos metodos
 
     @Override
     public String toString() {
-        return "Alumno{" + "codigo=" + codigo + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", edad=" + edad + ", sexo=" + sexo + ", fechaNacimineto=" + fechaNacimineto + ", emailPersonal=" + emailPersonal + ", emailEgibide=" + emailEgibide + ", web=" + web + ", curso=" + curso + ", estadoCivil=" + estadoCivil + '}';
+        if (!this.web.isEmpty()) {
+            return "Alumno{" + "codigo=" + codigo + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", edad=" + edad + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + ", emailPersonal=" + emailPersonal + ", emailEgibide=" + emailEgibide + ", web=" + web + ", curso=" + curso + ", estadoCivil=" + estadoCivil + '}'; 
+        }else{
+            return "Alumno{" + "codigo=" + codigo + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", edad=" + edad + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + ", emailPersonal=" + emailPersonal + ", emailEgibide=" + emailEgibide + ", curso=" + curso + ", estadoCivil=" + estadoCivil + '}';
+        }
     }
+    
+    
     
     
     

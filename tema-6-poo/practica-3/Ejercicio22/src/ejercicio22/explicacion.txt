@@ -1,0 +1,12 @@
+ArrayLisT<Obra> listaObras;
+listaObras = new ArrayList<Obra>();
+
+
+
+
+ArrayList <Artista> lista = obtenerDato3();
+
+Obra o = new Obra(dato1, dato2, dato3);
+listaObras.add(o);
+
+ 

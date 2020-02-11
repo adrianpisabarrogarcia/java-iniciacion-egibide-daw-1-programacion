@@ -5,6 +5,7 @@
  */
 package Vistas;
 import ejercicio1.*;
+import Excepciones.*;
 
 import javax.swing.JOptionPane;
 
@@ -247,23 +248,31 @@ public class V1 extends javax.swing.JFrame {
     }//GEN-LAST:event_bFallosActionPerformed
 
     private void bComprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bComprobarActionPerformed
-        int numeroIntroducido = Integer.parseInt(JOptionPane.showInputDialog("Inserta la suma: "));
-        if (numeroIntroducido == suma) {
-            aciertos++;
-            intentos++;
-            String toAciertos = String.valueOf(aciertos);
-            String toIntentos = String.valueOf(intentos);
-            bAciertos.setText(toAciertos);
-            bIntentos.setText(toIntentos);    
-        }else{
-            fallos++;
-            intentos++;
-            String toFallos = String.valueOf(fallos);
-            String toIntentos = String.valueOf(intentos);
-            bFallos.setText(toFallos);
-            bIntentos.setText(toIntentos);
+        try {
+            if (bNum1.getText().isEmpty() && bNum2.getText().isEmpty()) {
+                throw new PulsaAntesActivar();
+            }
+            int numeroIntroducido = Integer.parseInt(JOptionPane.showInputDialog("Inserta la suma: "));
+             if (numeroIntroducido == suma) {
+                 aciertos++;
+                    intentos++;
+                  String toAciertos = String.valueOf(aciertos);
+                  String toIntentos = String.valueOf(intentos);
+                  bAciertos.setText(toAciertos);
+                  bIntentos.setText(toIntentos);    
+             }else{
+                   fallos++;
+                   intentos++;
+                    String toFallos = String.valueOf(fallos);
+                    String toIntentos = String.valueOf(intentos);
+                   bFallos.setText(toFallos);
+                   bIntentos.setText(toIntentos);
+            }
+            
+        } catch (PulsaAntesActivar e) {
+             JOptionPane.showMessageDialog(null, "Tienes que pulsar antes el botón Activar");
         }
-        
+  
     }//GEN-LAST:event_bComprobarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed

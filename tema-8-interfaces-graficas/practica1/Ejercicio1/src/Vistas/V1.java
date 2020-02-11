@@ -267,8 +267,7 @@ public class V1 extends javax.swing.JFrame {
     }//GEN-LAST:event_bComprobarActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
-        v1.dispose();
-        System.exit(0);
+        Ejercicio1.salir();
     }//GEN-LAST:event_bSalirActionPerformed
 
     /**

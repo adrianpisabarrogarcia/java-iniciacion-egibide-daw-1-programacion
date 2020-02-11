@@ -3,18 +3,24 @@ package vehiculo;
 
 import persona.Persona;
 
+
 public class moto extends vehiculo.Vehiculo{
-    
     private mo marca;
 
-    public moto(String matricula, String marca, Persona personas) {
-        super(matricula, marca, personas);
+    public moto(mo marca, String matricula, Persona persona) {
+        super(matricula, persona);
+        this.marca = marca;
     }
-   
-    @Override
-    public String toString() {
-        return "moto{" + "marca=" + marca + '}';
+
+    public mo getMarca() {
+        return marca;
     }
+
+    public void setMarca(mo marca) {
+        this.marca = marca;
+    }
+
+    
     
     
     

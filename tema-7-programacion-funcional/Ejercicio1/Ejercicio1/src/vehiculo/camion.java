@@ -5,19 +5,21 @@ import persona.Persona;
 
 
 public class camion extends vehiculo.Vehiculo{
-    
-   
-    
     private ca marca;
 
-    public camion(String matricula, String marca, Persona personas) {
-        super(matricula, marca, personas);
+    public camion(ca marca, String matricula, Persona persona) {
+        super(matricula, persona);
+        this.marca = marca;
     }
 
-    @Override
-    public String toString() {
-        return "camion{" + "marca=" + marca + '}';
+    public ca getMarca() {
+        return marca;
     }
+
+    public void setMarca(ca marca) {
+        this.marca = marca;
+    }
+    
     
     
     

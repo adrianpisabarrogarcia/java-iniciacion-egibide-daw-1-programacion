@@ -6,13 +6,11 @@ import persona.Persona;
 public class Vehiculo {
     
     private String matricula;
-    private String marca;
-    private persona.Persona personas;
+    private Persona persona;
 
-    public Vehiculo(String matricula, String marca, Persona personas) {
+    public Vehiculo(String matricula, Persona persona) {
         this.matricula = matricula;
-        this.marca = marca;
-        this.personas = personas;
+        this.persona = persona;
     }
 
     public String getMatricula() {
@@ -23,33 +21,21 @@ public class Vehiculo {
         this.matricula = matricula;
     }
 
-    public String getMarca() {
-        return marca;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public Persona getPersonas() {
-        return personas;
-    }
-
-    public void setPersonas(Persona personas) {
-        this.personas = personas;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "matricula=" + matricula + ", marca=" + marca + ", personas=" + personas + '}';
+        return "Vehiculo{" + "matricula=" + matricula + ", persona=" + persona + '}';
     }
 
-    
-
-
-
-    
-    
+   
+ 
     
     
 }

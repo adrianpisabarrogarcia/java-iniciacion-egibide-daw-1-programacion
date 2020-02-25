@@ -9,13 +9,28 @@ public class Alumno {
     private String edad;
     private String sexo;
     private String fechaNacimiento;
-    private String emailPersonal;
-    private String emailEgibide;
+    private String correoPersonal;
+    private String correoEgibide;
     private String web;
     private String curso;
     private String estadoCivil;
 
     public Alumno() {
+    }
+
+    public Alumno(String codigo, String nombre, String domicilio, String telefono, String edad, String sexo, String fechaNacimiento, String correoPersonal, String correoEgibide, String web, String curso, String estadoCivil) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.correoPersonal = correoPersonal;
+        this.correoEgibide = correoEgibide;
+        this.web = web;
+        this.curso = curso;
+        this.estadoCivil = estadoCivil;
     }
 
     public String getCodigo() {
@@ -74,20 +89,20 @@ public class Alumno {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getEmailPersonal() {
-        return emailPersonal;
+    public String getCorreoPersonal() {
+        return correoPersonal;
     }
 
-    public void setEmailPersonal(String emailPersonal) {
-        this.emailPersonal = emailPersonal;
+    public void setCorreoPersonal(String correoPersonal) {
+        this.correoPersonal = correoPersonal;
     }
 
-    public String getEmailEgibide() {
-        return emailEgibide;
+    public String getCorreoEgibide() {
+        return correoEgibide;
     }
 
-    public void setEmailEgibide(String emailEgibide) {
-        this.emailEgibide = emailEgibide;
+    public void setCorreoEgibide(String correoEgibide) {
+        this.correoEgibide = correoEgibide;
     }
 
     public String getWeb() {
@@ -116,13 +131,12 @@ public class Alumno {
 
     @Override
     public String toString() {
-        if (!this.web.isEmpty()) {
-            return "Alumno{" + "codigo=" + codigo + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", edad=" + edad + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + ", emailPersonal=" + emailPersonal + ", emailEgibide=" + emailEgibide + ", web=" + web + ", curso=" + curso + ", estadoCivil=" + estadoCivil + '}'; 
-        }else{
-            return "Alumno{" + "codigo=" + codigo + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", edad=" + edad + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + ", emailPersonal=" + emailPersonal + ", emailEgibide=" + emailEgibide + ", curso=" + curso + ", estadoCivil=" + estadoCivil + '}';
-        }
+        return "Alumno:\n" + ".codigo=" + codigo + "\n .nombre=" + nombre + 
+                "\n .domicilio=" + domicilio + "\n .telefono=" + telefono + "\n .edad=" + edad 
+                + "\n .sexo=" + sexo + "\n .fechaNacimiento=" + fechaNacimiento + "\n .correoPersonal=" 
+                + correoPersonal + "\n .correoEgibide=" + correoEgibide + "\n .web=" + web + "\n .curso=" 
+                + curso + "\n .estadoCivil=" + estadoCivil ;
     }
-    
     
     
     

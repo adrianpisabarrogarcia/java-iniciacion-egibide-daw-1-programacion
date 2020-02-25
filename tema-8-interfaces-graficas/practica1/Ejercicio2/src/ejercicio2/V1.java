@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 
 public class V1 extends javax.swing.JFrame {
+
+    
     
 
     /**
@@ -59,6 +61,11 @@ public class V1 extends javax.swing.JFrame {
         tfDNI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tfDNIFocusLost(evt);
+            }
+        });
+        tfDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfDNIActionPerformed(evt);
             }
         });
 
@@ -142,9 +149,11 @@ public class V1 extends javax.swing.JFrame {
         validacionNombre();
         validacionApellidos();
         validacionDNI();
-        Ejercicio2.guardar();
+        Ejercicio2.guardar(tfNombre.getText(), tfApellidos.getText(), tfDNI.getText());
         JOptionPane.showMessageDialog(null, "Se ha introducido. Todo okey");
-        
+        tfNombre.setText("");
+        tfApellidos.setText("");
+        tfDNI.setText("");
         
     }//GEN-LAST:event_bAceptarActionPerformed
 
@@ -170,6 +179,10 @@ public class V1 extends javax.swing.JFrame {
             validacionDNI();
         }
     }//GEN-LAST:event_tfDNIFocusLost
+
+    private void tfDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfDNIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,22 +237,21 @@ public class V1 extends javax.swing.JFrame {
             Matcher mat = pat.matcher(tfDNI.getText());
             if(!mat.matches()) {
                 throw new DatoNoValido();
-            }
-            /*else{
+            }else{
                 String comprobacionNumero= "";
                 for (int i = 0; i < (tfDNI.getText().length()-1); i++) {
                     String cadena = Character.toString(tfDNI.getText().charAt(i));
                     comprobacionNumero = comprobacionNumero + cadena; 
                 }  
-                char letraDNI = tfDNI.getText().charAt(9);
+                char letraDNI = tfDNI.getText().charAt(8);
                 int numeroDNI = Integer.parseInt(comprobacionNumero);
                 char arrayLetrasDNI[] = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
                 int division = numeroDNI % 23;
-                if(division != arrayLetrasDNI[division]){
+                if(letraDNI != arrayLetrasDNI[division]){
                     throw new DatoNoValido();
                 } 
   
-            } */
+            } 
         }catch(DatoNoValido e){
             JOptionPane.showMessageDialog(null, "DNI mal");
         }
@@ -269,4 +281,6 @@ public class V1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nombre mal");
         }
     }
+    
+   
 }

@@ -30,7 +30,7 @@ public class V2 extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taContenedor = new javax.swing.JTextArea();
         bSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,9 +38,18 @@ public class V2 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setText("Mostrar Datos");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taContenedor.setColumns(20);
+        taContenedor.setRows(5);
+        taContenedor.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                taContenedorAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(taContenedor);
 
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +94,10 @@ public class V2 extends javax.swing.JFrame {
         Ejercicio2.salirV2(); 
     }//GEN-LAST:event_bSalirActionPerformed
 
+    private void taContenedorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_taContenedorAncestorAdded
+        taContenedor.setText(Ejercicio2.mostrar());
+    }//GEN-LAST:event_taContenedorAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -124,6 +137,6 @@ public class V2 extends javax.swing.JFrame {
     private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea taContenedor;
     // End of variables declaration//GEN-END:variables
 }

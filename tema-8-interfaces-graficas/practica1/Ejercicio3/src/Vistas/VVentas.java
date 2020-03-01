@@ -16,6 +16,8 @@ public class VVentas extends javax.swing.JFrame {
      */
     public VVentas() {
         initComponents();
+        setTitle("Sumar productos al almacén - VENTAS");
+        
     }
 
     /**

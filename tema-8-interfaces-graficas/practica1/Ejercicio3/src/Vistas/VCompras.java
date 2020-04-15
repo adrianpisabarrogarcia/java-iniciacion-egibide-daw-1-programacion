@@ -18,8 +18,8 @@ public class VCompras extends javax.swing.JFrame {
      */
     public VCompras() {
         initComponents();
-        setTitle("Restar productos al Almacén - COMPRAS");
-        setExtendedState(MAXIMIZED_BOTH);
+        setTitle("Comprar Productos");
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -43,9 +43,9 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "nombre=" + nombre + ", precioUnitario=" + precioUnitario + ", unidades=" + unidades + '}';
+        return "nombre=" + nombre + "\nprecioUnitario=" + precioUnitario + "\nunidades=" + unidades + "\n\n";
     }
-    
+
     
     
 }

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class BBDD {
     
@@ -32,6 +33,7 @@ public class BBDD {
        catch(Exception e)
        {
            System.out.println(e.getMessage());
+           JOptionPane.showMessageDialog(null,"Imposible conectar");
        }
    }
    

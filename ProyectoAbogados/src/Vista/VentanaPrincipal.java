@@ -39,11 +39,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bAnadirExpediente = new javax.swing.JButton();
-        bModificarExpediente = new javax.swing.JButton();
         bAnadirCliente = new javax.swing.JButton();
-        bModificarCliente = new javax.swing.JButton();
-        bVisualizarExpedientes = new javax.swing.JButton();
-        bVisualizarClientes = new javax.swing.JButton();
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
         jButton1.setText("Añadir Expediente");
@@ -73,27 +69,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Clientes");
 
         bAnadirExpediente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
-        bAnadirExpediente.setText("Añadir Expediente");
-
-        bModificarExpediente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carpeta.png"))); // NOI18N
-        bModificarExpediente.setText("Modificar Expediente");
+        bAnadirExpediente.setText("Gestionar Expedientes");
+        bAnadirExpediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAnadirExpedienteActionPerformed(evt);
+            }
+        });
 
         bAnadirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
-        bAnadirCliente.setText("Añadir Cliente");
+        bAnadirCliente.setText("Gestionar Clientes");
         bAnadirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAnadirClienteActionPerformed(evt);
             }
         });
-
-        bModificarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
-        bModificarCliente.setText("Modificar Cliente");
-
-        bVisualizarExpedientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
-        bVisualizarExpedientes.setText("Visualizar Expedientes");
-
-        bVisualizarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar.png"))); // NOI18N
-        bVisualizarClientes.setText("Visualizar Clientes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,19 +103,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(186, 186, 186))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bAnadirExpediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(bModificarExpediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bVisualizarExpedientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bVisualizarClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bModificarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bAnadirCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
+                .addComponent(bAnadirExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addComponent(bAnadirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,15 +124,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAnadirExpediente)
                     .addComponent(bAnadirCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bModificarExpediente)
-                    .addComponent(bModificarCliente))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bVisualizarExpedientes)
-                    .addComponent(bVisualizarClientes))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 170, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,7 +137,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void bAnadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnadirClienteActionPerformed
         // TODO add your handling code here:
+        Controlador.ProyectoAbogados.verVac();
     }//GEN-LAST:event_bAnadirClienteActionPerformed
+
+    private void bAnadirExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnadirExpedienteActionPerformed
+        // TODO add your handling code here:
+        Controlador.ProyectoAbogados.verVae();
+    }//GEN-LAST:event_bAnadirExpedienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,11 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAnadirCliente;
     private javax.swing.JButton bAnadirExpediente;
-    private javax.swing.JButton bModificarCliente;
-    private javax.swing.JButton bModificarExpediente;
     private javax.swing.JButton bSalir;
-    private javax.swing.JButton bVisualizarClientes;
-    private javax.swing.JButton bVisualizarExpedientes;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

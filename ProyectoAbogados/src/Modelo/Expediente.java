@@ -16,16 +16,16 @@ public class Expediente {
     private String estado;
     private String asunto;
     private String categoria;
-    private String DNI_Cliente;
+    private String DNICliente;
 
-    public Expediente(int numExpediente, LocalDate fechaInicio, LocalDate fechaFIn, String estado, String asunto, String categoria, String DNI_Cliente) {
+    public Expediente(int numExpediente, LocalDate fechaInicio, LocalDate fechaFIn, String estado, String asunto, String categoria, String DNICliente) {
         this.numExpediente = numExpediente;
         this.fechaInicio = fechaInicio;
         this.fechaFIn = fechaFIn;
         this.estado = estado;
         this.asunto = asunto;
         this.categoria = categoria;
-        this.DNI_Cliente = DNI_Cliente;
+        this.DNICliente = DNICliente;
     }
 
     public Expediente() {
@@ -79,21 +79,24 @@ public class Expediente {
         this.categoria = categoria;
     }
 
-    public String getDNI_Cliente() {
-        return DNI_Cliente;
+    public String getDNICliente() {
+        return DNICliente;
     }
 
-    public void setDNI_Cliente(String DNI_Cliente) {
-        this.DNI_Cliente = DNI_Cliente;
+    public void setDNICliente(String DNICliente) {
+        this.DNICliente = DNICliente;
     }
     
     ///otros metodos
 
     @Override
     public String toString() {
-        return "Expediente{" + "numExpediente=" + numExpediente + ", fechaInicio=" + fechaInicio + ", fechaFIn=" + fechaFIn + ", estado=" + estado + ", asunto=" + asunto + ", categoria=" + categoria + ", DNI_Cliente=" + DNI_Cliente + '}';
+        return "Expediente{" + "numExpediente=" + numExpediente + ", fechaInicio=" + fechaInicio + ", fechaFIn=" + fechaFIn + ", estado=" + estado + ", asunto=" + asunto + ", categoria=" + categoria + ", DNi Cliente=" + DNICliente+'}';
     }
     
+    public String toString2() {
+        return "numExpediente=" + numExpediente + "\nfechaInicio=" + fechaInicio + "\nfechaFIn=" + fechaFIn + "\nestado=" + estado + "\nasunto=" + asunto + "\ncategoria=" + categoria + "\nDNi Cliente=" + DNICliente;
+    }
     
     
     

@@ -1,6 +1,8 @@
 
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author adrianpisabarrogarcia
@@ -14,6 +16,7 @@ public class Cliente {
     private String direccion;
     private String telefono1;
     private String telefono2;
+   // private ArrayList<Expediente> listaExpedientes = new ArrayList<Expediente>();
 
     public Cliente() {
     }
@@ -66,12 +69,27 @@ public class Cliente {
         this.telefono2 = telefono2;
     }
     
-    //OTROS METODOS
+    /*
+    public ArrayList<Expediente> getListaExpedientes() {
+        return listaExpedientes;
+    }
 
+    public void setListaExpedientes(ArrayList<Expediente> listaExpedientes) {
+        this.listaExpedientes = listaExpedientes;
+    }
+    */
     @Override
     public String toString() {
         return "Cliente{" + "DNI=" + DNI + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + '}';
     }
+    
+    public String toString2() {
+        return "\nDNI=" + DNI + "\nnombre=" + nombre + "\ndireccion=" + direccion + "\ntelefono1=" + telefono1 + "\ntelefono2=" + telefono2;
+    }
+    
+    
+    
+    
     
     
     

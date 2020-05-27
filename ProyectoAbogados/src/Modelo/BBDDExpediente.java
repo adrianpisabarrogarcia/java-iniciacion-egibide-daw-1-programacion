@@ -3,6 +3,7 @@ package Modelo;
 
 
 import Modelo.Expediente;
+import Modelo.*;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,41 +26,35 @@ public class BBDDExpediente {
     {
         this.con = con;
     }
- 
-   
-    public void registrarExpediente(Expediente f)
+    
+    
+    public void registrarExpediente2(Expediente e) throws Exception
     {
-        try{
-            String plantilla = "INSERT INTO expediente VALUES (?,?,?,?,?,?,?);";
-            PreparedStatement ps = con.prepareStatement(plantilla);
-
-            ps.setInt(1, f.getNumExpediente());
+        String plantilla = "INSERT INTO expediente VALUES (?,?,?,?,?,?,?)";
+        PreparedStatement ps = con.prepareStatement(plantilla);
+        
+        ps.setInt(1, e.getNumExpediente());
             //Conversión de LocalDate a Date
             //Date dateInicio = Date.valueOf(f.getFechaInicio());
 
-            ps.setDate(2, java.sql.Date.valueOf(f.getFechaInicio()));
+            ps.setDate(2, java.sql.Date.valueOf(e.getFechaInicio()));
             //Conversión de LocalDate a Date
             //Date dateFin = Date.valueOf(f.getFechaFIn());
-            ps.setDate(3, java.sql.Date.valueOf(f.getFechaFIn()));
-            ps.setString(4, f.getEstado());
-            ps.setString(5, f.getAsunto());
-            ps.setString(6, f.getCategoria());
-            ps.setString(7, f.getDNI_Cliente());  
+            ps.setDate(3, java.sql.Date.valueOf(e.getFechaFIn()));
+            ps.setString(4, e.getEstado());
+            ps.setString(5, e.getAsunto());
+            ps.setString(6, e.getCategoria());
+            ps.setString(7, e.getDNICliente());  
+     
+        //JOptionPane.showMessageDialog(null,c.toString());
+        int n = ps.executeUpdate();
+  
+        if (n != 1){
+            throw new Exception("El número de filas actualizadas no es uno");
 
-            int n = ps.executeUpdate();
-
-
-            if (n != 1){
-                JOptionPane.showInputDialog("El expediente con nº "+f.getNumExpediente()+ " ya existe. No es posible introducirlo.");
-            }
-            
-        }catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(null, "Problemas al ejecutar INSERT con BBDD");
-            
         }
-        
-            
     }
+    
 
 
    public Expediente consultarPersona(int numExpediente) throws Exception
@@ -95,24 +90,49 @@ public class BBDDExpediente {
            expediente.setEstado(res.getString("estado"));
            expediente.setAsunto(res.getString("asunto"));
            expediente.setCategoria(res.getString("categoria"));
-           expediente.setDNI_Cliente(res.getString("DNI_Cliente"));
+           expediente.setDNICliente(res.getString("DNI_Cliente"));
+           
            return expediente;
     }
     
-    public ArrayList<Expediente> listaDePersonas() throws Exception
+    public ArrayList<Expediente> listaDeExpedientes(String DNI) throws Exception
     {
         ArrayList<Expediente> listaExpedientes = new ArrayList();
-
-        // Es más seguro con preparedStatement
-        Statement consulta = con.createStatement();
-        ResultSet res = consulta.executeQuery("SELECT * FROM expediente");
-        
-        while(res.next())
-        {
-                 listaExpedientes.add(crearObjeto(res));
+        try {
+            
+             PreparedStatement consulta = con.prepareStatement("SELECT * FROM expediente WHERE DNI_Cliente = ? ");
+             consulta.setString(1, DNI);
+             ResultSet res = consulta.executeQuery();
+            
+            while(res.next())
+            {
+                     listaExpedientes.add(crearObjeto(res));
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Query error bbddexpediente listaDeExpedientes: "+e.getMessage());
         }
+        
         return listaExpedientes;
     }  
     
+       public int numExpedientes() throws Exception
+   {
+       Expediente expediente=null;
+ 
+       PreparedStatement consulta = con.prepareStatement("SELECT * FROM expediente ");
+       ResultSet res = consulta.executeQuery();
+        int numeroFilas = 0;
+        try {
+            res.last();
+            numeroFilas = res.getRow();
+            //resultSet.beforeFirst();
+        }
+        catch(Exception e) {
+            System.out.println("error encontrando el numero de filas");
+        }
+        return numeroFilas;
+    }
+
     
 }

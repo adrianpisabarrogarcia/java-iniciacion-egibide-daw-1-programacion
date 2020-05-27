@@ -2,15 +2,16 @@
 package Modelo;
 
 
-import Modelo.Expediente;
+import Modelo.*;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Month;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 
 
 
@@ -25,83 +26,111 @@ public class BBDDCliente {
     }
  
    
-    public void registrarExpediente(Expediente e) throws Exception
+    public void registrarCliente(Cliente c) throws Exception
     {
-        String plantilla = "INSERT INTO expendiente VALUES (?,?,?,?,?,?,?);";
+        String plantilla = "INSERT INTO cliente VALUES (?,?,?,?,?)";
         PreparedStatement ps = con.prepareStatement(plantilla);
         
-        ps.setInt(1, e.getNumExpediente());
-        //Conversión de LocalDate a Date
-        Date dateInicio = Date.valueOf(e.getFechaInicio());
-        ps.setDate(2, dateInicio);
-        //Conversión de LocalDate a Date
-        Date dateFin = Date.valueOf(e.getFechaFIn());
-        ps.setDate(3, dateFin);
-        ps.setString(4, e.getEstado());
-        ps.setString(5, e.getAsunto());
-        ps.setString(6, e.getCategoria());
-        ps.setString(7, e.getDNI_Cliente());  
-        
+        ps.setString(1, c.getDNI());
+        ps.setString(2, c.getNombre());
+        ps.setString(3, c.getDireccion());
+        ps.setString(4, c.getTelefono1());
+        ps.setString(5, c.getTelefono2());
      
-        
+        //JOptionPane.showMessageDialog(null,c.toString());
         int n = ps.executeUpdate();
   
-        if (n != 1)
+        if (n != 1){
             throw new Exception("El número de filas actualizadas no es uno");
+
+        }
     }
 
 
-   public Expediente consultarPersona(int numExpediente) throws Exception
+   public Cliente consultaCliente(String dni) throws Exception
    {
-       Expediente expediente=null;
+       Cliente cliente=null;
  
-       PreparedStatement consulta = con.prepareStatement("SELECT * FROM expediente WHERE numExpediente = ? ");
-       consulta.setInt(1, numExpediente);
+       PreparedStatement consulta = con.prepareStatement("SELECT * FROM cliente WHERE DNI = ? ");
+       consulta.setString(1, dni);
        ResultSet res = consulta.executeQuery();
 
-       // ¡Atención! Solo 1 expediente con ese numero
+       // ¡Atención! Solo 1 cliente con ese numero
        if(res.next())
        {
-          expediente=crearObjeto(res);
+          cliente=crearObjeto(res);
        }
        else
-            throw new Exception ("Persona no encontrada");
+            throw new Exception ("Cliente no encontrado");
  
-       return expediente;
+       return cliente;
     }
+   
+   public void eliminarCliente(String dni) throws Exception
+   {
+       Cliente cliente=new Cliente();
+ 
+       PreparedStatement delete = con.prepareStatement("DELETE FROM cliente WHERE DNI = ?");
+       delete.setString(1, dni);
+       int res = delete.executeUpdate();
 
-    public Expediente crearObjeto(ResultSet res) throws Exception
+       // ¡Atención! Solo 1 cliente con ese numero
+       if(res != 1)
+            throw new Exception ("Cliente no encontrado");
+      
+ 
+    }
+   
+   
+   
+   
+
+    public Cliente crearObjeto(ResultSet res) throws Exception
     {
-           Expediente expediente= new Expediente();
-           expediente.setNumExpediente(res.getInt("numExpediente"));
-            //Conversión de Date a LocalDate!
-            Date date = res.getDate("fechaInicio");
-            LocalDate locald = date.toLocalDate();
-           expediente.setFechaInicio(locald);
-            Date date2 = res.getDate("fechaFin");
-            LocalDate locald2 = date2.toLocalDate();
-           expediente.setFechaFIn(locald2);
-           expediente.setEstado(res.getString("estado"));
-           expediente.setAsunto(res.getString("asunto"));
-           expediente.setCategoria(res.getString("categoria"));
-           expediente.setDNI_Cliente(res.getString("DNI_Cliente"));
-           return expediente;
+           Cliente cliente= new Cliente();
+           
+           cliente.setDNI(res.getString("DNI"));
+           cliente.setNombre(res.getString("nombre"));
+           cliente.setDireccion(res.getString("direccion"));
+           cliente.setTelefono1(res.getString("telefono1"));
+           cliente.setTelefono2(res.getString("telefono2"));
+           
+           
+           return cliente;
     }
     
-    public ArrayList<Expediente> listaDePersonas() throws Exception
+
+    public ArrayList<Cliente> listaClientes() throws Exception
     {
-        ArrayList<Expediente> listaExpedientes = new ArrayList();
+        ArrayList<Cliente> listaClientes = new ArrayList();
 
         // Es más seguro con preparedStatement
         Statement consulta = con.createStatement();
-        ResultSet res = consulta.executeQuery("SELECT * FROM expediente");
+        ResultSet res = consulta.executeQuery("SELECT * FROM cliente");
         
         while(res.next())
         {
-                 listaExpedientes.add(crearObjeto(res));
+                 listaClientes.add(crearObjeto(res));
         }
-        return listaExpedientes;
+        return listaClientes;
+    } 
+    /*
+    public ArrayList<Cliente> listaClientes() throws Exception
+    {
+        ArrayList<Cliente> listaClientes = new ArrayList();
+
+        // Es más seguro con preparedStatement
+        Statement consulta = con.createStatement();
+        ResultSet res = consulta.executeQuery("SELECT * FROM cliente WHERE DNI = ? ");
+        
+        while(res.next())
+        {
+                 listaClientes.add(crearObjeto(res));
+        }
+        return listaClientes;
     }  
+    */
+
     
     
 }

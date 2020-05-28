@@ -184,6 +184,18 @@ public class ProyectoAbogados {
         
         return ex; 
     }
+    public static void eliminarExpediente(String numExpediente){
+       
+        try {
+            int integerNumExpediente = Integer.parseInt(numExpediente);
+            bbbddExpediente.eliminarExpediente(integerNumExpediente);
+            
+        } catch (Exception e) {
+            System.out.println("Imposible eliminar un expediente. Error metodo eliminarExpediente: "+e.getMessage());
+        }
+
+    }
+
     
     public static int obtenerNumeroFilasExpediente(){
         int num =0;

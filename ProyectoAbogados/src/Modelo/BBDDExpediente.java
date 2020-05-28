@@ -134,6 +134,21 @@ public class BBDDExpediente {
         }
         return numeroFilas;
     }
+       
+       public void eliminarExpediente(int numExpediente) throws Exception
+   {
+       Cliente cliente=new Cliente();
+ 
+       PreparedStatement delete = con.prepareStatement("DELETE FROM expediente WHERE numExpediente = ?");
+       delete.setInt(1, numExpediente);
+       int res = delete.executeUpdate();
+
+       // ¡Atención! Solo 1 cliente con ese numero
+       if(res != 1)
+            throw new Exception ("Expediente no encontrado");
+      
+ 
+    }
 
     
 }

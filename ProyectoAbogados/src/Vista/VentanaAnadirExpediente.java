@@ -28,7 +28,8 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         numeroFilas();
         //visibility a false
         bBuscarExpediente.setVisible(false);
-        
+        bEliminar.setVisible(false);
+
     }
 
     /**
@@ -45,6 +46,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         bAnadir = new javax.swing.JButton();
         bBorrar = new javax.swing.JButton();
         bBuscar = new javax.swing.JButton();
+        bEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tfNumExpediente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -114,6 +116,18 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(bBuscar);
+
+        bEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/papelera.png"))); // NOI18N
+        bEliminar.setText("Eliminar Expediente");
+        bEliminar.setFocusable(false);
+        bEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(bEliminar);
 
         jLabel1.setText("Número de Expediente: ");
 
@@ -359,6 +373,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         
         bBuscarExpediente.setVisible(true);
         tfNumExpediente.setEditable(true);
+        bEliminar.setVisible(true);
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bBuscarExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarExpedienteActionPerformed
@@ -418,6 +433,17 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bBuscarExpedienteActionPerformed
 
+    private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
+        // TODO add your handling code here:
+        try {
+            Controlador.ProyectoAbogados.eliminarExpediente(tfNumExpediente.getText());
+            JOptionPane.showMessageDialog(null, "Expediente Nº"+tfNumExpediente.getText()+ " correctamente eliminado.");
+            borrarCampos();
+        } catch (Exception e) {
+            System.out.println("Error eliminando expediente bEliminarActionPerformed: "+e.getMessage());
+        }
+    }//GEN-LAST:event_bEliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -474,6 +500,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
     private javax.swing.JButton bBorrar;
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bBuscarExpediente;
+    private javax.swing.JButton bEliminar;
     private javax.swing.JComboBox<String> cCategoria;
     private javax.swing.JComboBox<String> cEstado;
     private javax.swing.JButton jButton1;

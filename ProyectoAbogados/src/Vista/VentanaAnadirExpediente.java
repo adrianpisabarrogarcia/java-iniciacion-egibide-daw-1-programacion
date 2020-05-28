@@ -25,9 +25,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         this.setTitle("M&C - Añadir Expedientes");
         //centrar jframe
         setLocationRelativeTo(null);
-        int numeroFilas = Controlador.ProyectoAbogados.obtenerNumeroFilasExpediente()+1;
-        String stringNumeroFilas = String.valueOf(numeroFilas);
-        tfNumExpediente.setText(stringNumeroFilas);
+        numeroFilas();
         //visibility a false
         bBuscarExpediente.setVisible(false);
         
@@ -301,6 +299,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
             Controlador.ProyectoAbogados.insertarExpediente(numExpediente, dateInicio, dateFin, estado, tfAsunto.getText(), categoria, tfDNI.getText());
             JOptionPane.showMessageDialog(null, "Expediente añadido");
             borrarCampos();
+            numeroFilas();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Expediente ya existe");
         }
@@ -462,6 +461,12 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         cCategoria.setSelectedIndex(0);
         cEstado.setSelectedIndex(0);
         tfDNI.setText("");
+    }
+    
+    private void numeroFilas(){
+        int numeroFilas = Controlador.ProyectoAbogados.obtenerNumeroFilasExpediente()+1;
+        String stringNumeroFilas = String.valueOf(numeroFilas);
+        tfNumExpediente.setText(stringNumeroFilas);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

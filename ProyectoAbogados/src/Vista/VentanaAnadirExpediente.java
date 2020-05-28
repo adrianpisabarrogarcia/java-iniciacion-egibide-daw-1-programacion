@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.Expediente;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
@@ -27,6 +28,9 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         int numeroFilas = Controlador.ProyectoAbogados.obtenerNumeroFilasExpediente()+1;
         String stringNumeroFilas = String.valueOf(numeroFilas);
         tfNumExpediente.setText(stringNumeroFilas);
+        //visibility a false
+        bBuscarExpediente.setVisible(false);
+        
     }
 
     /**
@@ -42,6 +46,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         bAnadir = new javax.swing.JButton();
         bBorrar = new javax.swing.JButton();
+        bBuscar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tfNumExpediente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -58,6 +63,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tfDNI = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        bBuscarExpediente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -98,6 +104,18 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(bBorrar);
+
+        bBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar2.png"))); // NOI18N
+        bBuscar.setText("Buscar Expediente");
+        bBuscar.setFocusable(false);
+        bBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bBuscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        bBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(bBuscar);
 
         jLabel1.setText("Número de Expediente: ");
 
@@ -176,6 +194,13 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
             }
         });
 
+        bBuscarExpediente.setText("Buscar");
+        bBuscarExpediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarExpedienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,7 +231,9 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
                                             .addComponent(cCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(tfNumExpediente, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton1)
+                                            .addComponent(bBuscarExpediente)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(99, 99, 99)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -223,7 +250,8 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfNumExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNumExpediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bBuscarExpediente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -244,7 +272,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -274,7 +302,7 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Expediente añadido");
             borrarCampos();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Problemas aqui. Ventana añadir expediente añadir action performed: "+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Expediente ya existe");
         }
         
     }//GEN-LAST:event_bAnadirActionPerformed
@@ -327,6 +355,70 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        bBuscarExpediente.setVisible(true);
+        tfNumExpediente.setEditable(true);
+    }//GEN-LAST:event_bBuscarActionPerformed
+
+    private void bBuscarExpedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarExpedienteActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+
+
+            Expediente ex = new Expediente();
+
+            ex= Controlador.ProyectoAbogados.mostrarExpediente(tfNumExpediente.getText());
+            tfFechaInicio.setText(ex.getFechaInicio().toString());
+            tfFechaFin.setText(ex.getFechaFIn().toString());
+            String arrayEstado[] = new String[8];
+            arrayEstado[0] = " ";
+            arrayEstado[1] = "EN LETRA";
+            arrayEstado[2] = "A DESPACHO";
+            arrayEstado[3] = "EN VISTA";
+            arrayEstado[4] = "EN FISCALIA";
+            arrayEstado[5] = "PREPARALIZADO";
+            arrayEstado[6] = "PARALIZADO";
+            arrayEstado[7] = "ARCHIVADO";
+            int posicion=0;
+            for (int i = 0; i < arrayEstado.length; i++) {
+                String array = arrayEstado[i].toString();
+                if (ex.getEstado().equalsIgnoreCase(array)) {
+                    posicion = i;
+                }
+            }
+
+            cEstado.setSelectedIndex(posicion);
+            tfAsunto.setText(ex.getAsunto());
+
+            String arrayCategoria[] = new String[8];
+            arrayCategoria[0] = " ";
+            arrayCategoria[1] = "LABORAL";
+            arrayCategoria[2] = "PENAL";
+            arrayCategoria[3] = "CIVIL";
+            arrayCategoria[4] = "FAMILIAR";
+            arrayCategoria[5] = "MERCANTIL";
+            arrayCategoria[6] = "ADMINISTRATIVO";
+            arrayCategoria[7] = "FISCAL";
+            int posicion2=0;
+            for (int i = 0; i < arrayCategoria.length; i++) {
+                String array2 = arrayCategoria[i];
+                if (ex.getCategoria().equalsIgnoreCase(array2)) {
+                    posicion2 = i;
+                }
+            }
+            cCategoria.setSelectedIndex(posicion2);
+            tfDNI.setText(ex.getDNICliente());
+
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error encontrando el expediente");
+        }
+        
+    }//GEN-LAST:event_bBuscarExpedienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -375,6 +467,8 @@ public class VentanaAnadirExpediente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAnadir;
     private javax.swing.JButton bBorrar;
+    private javax.swing.JButton bBuscar;
+    private javax.swing.JButton bBuscarExpediente;
     private javax.swing.JComboBox<String> cCategoria;
     private javax.swing.JComboBox<String> cEstado;
     private javax.swing.JButton jButton1;

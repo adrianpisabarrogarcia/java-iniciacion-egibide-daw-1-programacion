@@ -45,6 +45,26 @@ public class BBDDCliente {
 
         }
     }
+    
+    public void modificarCliente(Cliente c) throws Exception
+    {
+        String plantilla = "UPDATE cliente SET nombre = ? , direccion = ? , telefono1 = ? , telefono2 = ? WHERE DNI = ? ";
+        PreparedStatement ps = con.prepareStatement(plantilla);
+        
+        ps.setString(5, c.getDNI());
+        ps.setString(1, c.getNombre());
+        ps.setString(2, c.getDireccion());
+        ps.setString(3, c.getTelefono1());
+        ps.setString(4, c.getTelefono2());
+     
+        //JOptionPane.showMessageDialog(null,c.toString());
+        int n = ps.executeUpdate();
+  
+        if (n != 1){
+            throw new Exception("El número de filas actualizadas no es uno");
+
+        }
+    }
 
 
    public Cliente consultaCliente(String dni) throws Exception
@@ -114,22 +134,7 @@ public class BBDDCliente {
         }
         return listaClientes;
     } 
-    /*
-    public ArrayList<Cliente> listaClientes() throws Exception
-    {
-        ArrayList<Cliente> listaClientes = new ArrayList();
 
-        // Es más seguro con preparedStatement
-        Statement consulta = con.createStatement();
-        ResultSet res = consulta.executeQuery("SELECT * FROM cliente WHERE DNI = ? ");
-        
-        while(res.next())
-        {
-                 listaClientes.add(crearObjeto(res));
-        }
-        return listaClientes;
-    }  
-    */
 
     
     

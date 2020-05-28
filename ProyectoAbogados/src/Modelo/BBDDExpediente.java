@@ -57,21 +57,22 @@ public class BBDDExpediente {
     
 
 
-   public Expediente consultarPersona(int numExpediente) throws Exception
+   public Expediente consultaExpediente(String numExpediente) throws Exception
    {
        Expediente expediente=null;
  
        PreparedStatement consulta = con.prepareStatement("SELECT * FROM expediente WHERE numExpediente = ? ");
-       consulta.setInt(1, numExpediente);
+       int integerNumExpediente = Integer.parseInt(numExpediente);
+       consulta.setInt(1, integerNumExpediente);
        ResultSet res = consulta.executeQuery();
 
-       // ¡Atención! Solo 1 expediente con ese numero
+       // ¡Atención! Solo 1 cliente con ese numero
        if(res.next())
        {
           expediente=crearObjeto(res);
        }
        else
-            throw new Exception ("Persona no encontrada");
+            throw new Exception ("Cliente no encontrado");
  
        return expediente;
     }

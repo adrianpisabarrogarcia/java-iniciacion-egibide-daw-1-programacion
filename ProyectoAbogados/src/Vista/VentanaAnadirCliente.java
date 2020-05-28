@@ -469,6 +469,14 @@ public class VentanaAnadirCliente extends javax.swing.JFrame {
 
     private void bModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarClienteActionPerformed
         // TODO add your handling code here:
+        try {
+            Controlador.ProyectoAbogados.modificarCliente(tfDNI.getText(), tfNombre.getText(), tfDireccion.getText(), tfTelefono1.getText(), tfTelefono2.getText());
+            JOptionPane.showMessageDialog(null, "Cliente "+tfNombre.getText()+" modificado.");
+            borrarDatos();
+        } catch (Exception e) {
+            System.out.println("Errores modificando cliente: "+e.getMessage());
+        }
+        
     }//GEN-LAST:event_bModificarClienteActionPerformed
 
     private void bExpedientesAsociadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExpedientesAsociadosActionPerformed

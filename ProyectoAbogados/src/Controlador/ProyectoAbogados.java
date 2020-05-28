@@ -145,7 +145,7 @@ public class ProyectoAbogados {
             }
             c.setTelefono2(telefono2);
             //JOptionPane.showMessageDialog(null, c.toString());
-            bbddCliente.registrarCliente(c);
+            bbddCliente.modificarCliente(c);
             
         } catch (Exception e) {
             System.out.println("Error insertando un cliente. Error en metodo insertarCliente."+e.getMessage());
@@ -172,6 +172,19 @@ public class ProyectoAbogados {
         }
         
     }
+    public static Expediente mostrarExpediente(String numExpediente){
+        Expediente ex = new Expediente();
+
+        try {
+            ex=bbbddExpediente.consultaExpediente(numExpediente);
+            
+        } catch (Exception e) {
+            System.out.println("Imposible mostrar un expediente. Error metodo mostrarExpediente: "+e.getMessage());
+        }
+        
+        return ex; 
+    }
+    
     public static int obtenerNumeroFilasExpediente(){
         int num =0;
         try {

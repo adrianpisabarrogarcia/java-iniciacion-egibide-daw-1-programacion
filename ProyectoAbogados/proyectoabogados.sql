@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-05-2020 a las 01:02:45
+-- Tiempo de generación: 28-05-2020 a las 13:12:25
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.30
 
@@ -40,7 +40,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`DNI`, `nombre`, `direccion`, `telefono1`, `telefono2`) VALUES
-('12345678A', 'sad asdf sadsad', 'asdf', '123456789', ' ');
+('12345678A', 'adrian pisabarro garcia', 'asdf', '123456789', ' '),
+('12345678B', 'erty rtyui tyui', 'Brasil, Nº9, 2ºK, 01009, Vitoria-Gasteiz', '123456789', ' ');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,10 @@ CREATE TABLE `expediente` (
 INSERT INTO `expediente` (`numExpediente`, `fechaInicio`, `fechaFin`, `estado`, `asunto`, `categoria`, `DNI_Cliente`) VALUES
 (1, '2020-05-05', '2020-08-07', 'EN VISTA', 'Escribe aasDquí la descripción del asunto.', 'PENAL', '12345678A'),
 (2, '2020-04-22', '2020-05-23', 'EN VISTA', 'Escribe adaquí la descripción del asunto.', 'CIVIL', '12345678A'),
-(3, '2020-05-24', '2020-05-25', 'PREPARALIZADO', 'Ejemplo Asunto', 'FISCAL', '12345678A');
+(3, '2020-05-24', '2020-05-25', 'PREPARALIZADO', 'Ejemplo Asunto', 'FISCAL', '12345678A'),
+(4, '2020-04-03', '2020-04-05', 'A DESPACHO', 'Esto es un asunto de ejemplo', 'PENAL', '12345678A'),
+(5, '2020-05-04', '2020-07-05', 'A DESPACHO', 'Esto es un ejemplo', 'FISCAL', '12345678B'),
+(6, '2020-04-07', '2020-04-08', 'A DESPACHO', 'eareasf sadfasf', 'LABORAL', '12345678B');
 
 --
 -- Índices para tablas volcadas

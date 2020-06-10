@@ -10,6 +10,10 @@ package Vista;
  * @author adrianpisabarrogarcia
  */
 import Controlador.*;
+import java.awt.Image;
+import java.net.URL;
+import java.util.List;
+import javax.swing.ImageIcon;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
@@ -21,6 +25,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.setTitle("Abogados Mascaró M&C");
         //centrar jframe
         setLocationRelativeTo(null);
+        //logo
+        //setIconImages(new ImageIcon(getClass().getResource("../Imagenes/logo.png")).getImage());
     }
 
     /**
@@ -193,4 +199,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    private void setIconImage(URL resource) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
